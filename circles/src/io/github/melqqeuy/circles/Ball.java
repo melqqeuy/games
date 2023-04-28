@@ -1,7 +1,7 @@
 package io.github.melqqeuy.circles;
 
 import java.awt.*;
-public class Ball extends Sprite{
+public class Ball extends Sprite {
     private float vx = 150f + (float) (Math.random()*200f);
     private float vy = 150f + (float) (Math.random()*200f);
     private Color color= new Color((int) (Math.random() * 256f),(int) (Math.random() * 256f),(int) (Math.random() * 256f),(int) (Math.random() * 256f));
@@ -10,8 +10,16 @@ public class Ball extends Sprite{
         halfHeight=20f+(float) (Math.random()*50f);
         halfWidth=halfHeight;
     }
+
+    public Ball(int x, int y) {
+        this();
+        this.x = x;
+        this.y = y;
+    }
+
+
     @Override
-    void update(GameCanvas gameCanvas, float deltaTime) {
+    public void update(GameCanvas gameCanvas, float deltaTime) {
         x+=vx*deltaTime;
         y+=vy*deltaTime;
         if(getLeft()<gameCanvas.getLeft()){
@@ -34,7 +42,7 @@ public class Ball extends Sprite{
     }
 
     @Override
-    void render(GameCanvas gameCanvas, Graphics g) {
+    public void render(GameCanvas gameCanvas, Graphics g) {
         g.setColor(color);
         g.fillOval((int)getLeft(),(int)getTop(),(int)getWidth(),(int)getHeight());
 

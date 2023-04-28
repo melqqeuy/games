@@ -2,7 +2,7 @@ package io.github.melqqeuy.circles;
 
 import java.awt.*;
 
-public abstract class Sprite {
+public class Sprite implements GameObject{
 
     float x;
     float y;
@@ -19,8 +19,10 @@ public abstract class Sprite {
     void setBottom(float bottom) { y = bottom - halfHeight; }
     float getWidth() { return 2f * halfWidth; }
     float getHeight() { return 2f * halfHeight; }
-    abstract void update(GameCanvas gameCanvas, float deltaTime);
-    abstract void render(GameCanvas gameCanvas, Graphics g);
+    @Override
+    public void update(GameCanvas gameCanvas, float deltaTime) {}
+    @Override
+    public void render(GameCanvas gameCanvas, Graphics g) {}
 
 
 
