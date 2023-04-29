@@ -1,4 +1,4 @@
-package io.github.melqqeuy.circles;
+package io.github.melqqeuy.engine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,10 +6,10 @@ public class GameCanvas extends JPanel {
 
 
     private long lastFrameTime;
-    private final GameWindow gameWindow;
+    private final CanvasPaintListener listener;
 
-    public GameCanvas(GameWindow gameWindow) {
-        this.gameWindow = gameWindow;
+    public GameCanvas(CanvasPaintListener listener) {
+        this.listener = listener;
         lastFrameTime = System.nanoTime();
 
     }
@@ -21,7 +21,7 @@ public class GameCanvas extends JPanel {
        float deltaTime = (currentTime - lastFrameTime) * 1e-9f;
        lastFrameTime = currentTime;
 
-       gameWindow.onDrawFrame(this, g, deltaTime);
+       listener.onDrawFrame(this, g, deltaTime);
 
         try {
             Thread.sleep((int)(1f / 60f) * 1000);

@@ -1,4 +1,5 @@
-package io.github.melqqeuy.circles;
+package io.github.melqqeuy.rectangles;
+
 import io.github.melqqeuy.engine.CanvasPaintListener;
 import io.github.melqqeuy.engine.GameCanvas;
 import io.github.melqqeuy.engine.GameObject;
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class GameWindow extends JFrame implements CanvasPaintListener {
+public class RectanglesWindow extends JFrame implements CanvasPaintListener {
 
     private static final int POS_X = 600;
     private static final int POS_Y = 200;
@@ -22,27 +23,18 @@ public class GameWindow extends JFrame implements CanvasPaintListener {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new GameWindow();
+                new RectanglesWindow();
             }
         });
     }
 
     private GameObject[] gameObjects = new GameObject[START_BALLS_COUNT];
     private int gameObjectsCount;
-    private GameWindow() {
+    private RectanglesWindow() {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(POS_X, POS_Y, WIDTH, HEIGHT);
         GameCanvas gameCanvas = new GameCanvas(this);
-        gameCanvas.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                int btn = e.getButton();
-                if (btn == MouseEvent.BUTTON1)
-                    addGameObject(new Ball(e.getX(), e.getY()));
-                else if (gameObjectsCount > 1) removeGameObject();
-            }
-        });
         add(gameCanvas);
         initGame();
         setVisible(true);
@@ -60,7 +52,7 @@ public class GameWindow extends JFrame implements CanvasPaintListener {
             System.arraycopy(gameObjects, 0, newSprites, 0, gameObjects.length);
             gameObjects = newSprites;
         }
-            gameObjects[gameObjectsCount++] = gameObject;
+        gameObjects[gameObjectsCount++] = gameObject;
     }
 
     private GameObject removeGameObject() {
@@ -74,10 +66,6 @@ public class GameWindow extends JFrame implements CanvasPaintListener {
     }
 
     private void initGame() {
-        addGameObject(new Background());
-        for (int i = 0; i < START_BALLS_COUNT; i++) {
-            addGameObject(new Ball());
-        }
     }
 
     @Override

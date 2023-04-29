@@ -1,5 +1,8 @@
 package io.github.melqqeuy.circles;
 
+import io.github.melqqeuy.engine.GameCanvas;
+import io.github.melqqeuy.engine.GameObject;
+
 import java.awt.*;
 
 public class Background implements GameObject

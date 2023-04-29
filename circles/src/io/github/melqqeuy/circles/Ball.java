@@ -1,5 +1,8 @@
 package io.github.melqqeuy.circles;
 
+import io.github.melqqeuy.engine.GameCanvas;
+import io.github.melqqeuy.engine.Sprite;
+
 import java.awt.*;
 public class Ball extends Sprite {
     private float vx = 150f + (float) (Math.random()*200f);
